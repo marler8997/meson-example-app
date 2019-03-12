@@ -1,0 +1,22 @@
+project('libexample', 'c',
+  version : '1.0.0',
+)
+
+download_repo = custom_target('download-repo',
+  output:['meson-example-library-repo'],
+  input:files('download-repo'),
+  command:['@INPUT@', '@OUTPUT@'],
+)
+
+repo_dir = download_repo.output(0)
+
+libexample = library('libexample',
+  repo_dir.file('example.c'),
+  repo_dir.file('example.h'),
+  include_directories : [repo_dir],
+  install:true,
+)
+libexample_dep = declare_dependency(
+  include_directories : [repo_dir],
+  link_with : libexample,
+)

@@ -1,0 +1,8 @@
+# shouldn't need to ignore this example.h file but I can't find a way
+# for meson to be able to include generated headers without copying
+# them to the source directory
+/example.h
+/subprojects/libexample/example.h
+
+bin/
+*~

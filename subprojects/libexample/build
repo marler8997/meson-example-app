@@ -1,0 +1,7 @@
+#!/bin/bash
+set -ex
+if [[ ! -d bin ]]; then
+    mkdir bin
+    meson bin
+fi
+ninja -C bin
